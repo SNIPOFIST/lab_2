@@ -9,4 +9,4 @@ pages=[
 pg = st.navigation(pages)
 pg.run()
 
-st.sidebar.title("Summary Options")
+st.title("Home work manager ")
