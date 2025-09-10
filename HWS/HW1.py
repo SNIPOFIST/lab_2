@@ -11,7 +11,8 @@ def read_pdf(file):
     return text
 
 
-st.title("📄 Document Question Answering (HW-1)")
+st.title("📄 Home work 1: Document Question Answering ")
+
 st.write(
     "Upload a `.txt` or `.pdf` file and ask a question about it. "
     "To use this app, you need to provide an OpenAI API key."
