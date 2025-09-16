@@ -6,7 +6,8 @@ st.sidebar.title("* Homework manager *")
 
 pages=[
     st.Page("HWS/HW1.py", title = "IST_688_Homework_1"),
-    st.Page("HWS/HW2.py", title= "IST_688_Homework_2")
+    st.Page("HWS/HW2.py", title= "IST_688_Homework_2"),
+    st.Page("lab_03.py", title="IST_688_Lab_work")
 ]
 
 pg = st.navigation(pages)

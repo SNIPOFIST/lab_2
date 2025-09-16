@@ -70,6 +70,10 @@ instance/
 # Scrapy stuff:
 .scrapy
 
+# streamlit
+.streamlit/secrets.toml
+.streamlit
+
 # Sphinx documentation
 docs/_build/
 
