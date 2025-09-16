@@ -6,7 +6,6 @@
 #  • Streaming answers where supported
 #  • Token counting + context trimming
 #  • Uses both URLs (if provided) + conversation memory to answer the question
-
 import os
 from typing import List, Dict, Optional
 
@@ -14,7 +13,7 @@ import streamlit as st
 import requests
 from bs4 import BeautifulSoup
 
-# --- Optional tokenizer ---
+
 try:
     import tiktoken
 except Exception:
@@ -107,7 +106,7 @@ def init_state():
 
 init_state()
 
-# --- Utilities ---
+
 def estimate_tokens(text: str) -> int:
     if tiktoken:
         try:
