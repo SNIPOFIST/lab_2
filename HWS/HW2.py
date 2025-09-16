@@ -2,7 +2,7 @@ import requests
 import streamlit as st
 from bs4 import BeautifulSoup
 
-# MY API KEYS 
+# MY API KEYS
 OPENAI_API_KEY   = st.secrets.get("OPENAI_API_KEY")
 GEMINI_API_KEY   = st.secrets.get("GEMINI_API_KEY")
 MISTRAL_API_KEY  = st.secrets.get("MISTRAL_API_KEY")
