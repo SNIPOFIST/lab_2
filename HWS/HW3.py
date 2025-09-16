@@ -33,10 +33,12 @@ except Exception:
 st.set_page_config(page_title="HW3 – URL Chatbot with Memory", page_icon="🧠")
 st.title("🧠 HW3: Streaming Chatbot that Discusses URLs")
 
-# --- Secrets ---
-OPENAI_API_KEY  = st.secrets["api_keys"].get("OPENAI_API_KEY")
-GEMINI_API_KEY  = st.secrets["api_keys"].get("GEMINI_API_KEY")
-MISTRAL_API_KEY = st.secrets["api_keys"].get("MISTRAL_API_KEY")
+
+# MY API KEYS 
+OPENAI_API_KEY   = st.secrets.get("OPENAI_API_KEY")
+GEMINI_API_KEY   = st.secrets.get("GEMINI_API_KEY")
+MISTRAL_API_KEY  = st.secrets.get("MISTRAL_API_KEY")
+
 
 # Create vendor clients (on demand)
 def get_openai_client():
