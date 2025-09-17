@@ -70,7 +70,7 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# streamlit
+# Streamlit
 .streamlit/secrets.toml
 .streamlit
 
