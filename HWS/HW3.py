@@ -31,7 +31,7 @@ except Exception:
     Mistral = None
 
 st.set_page_config(page_title="HW3 – URL Chatbot with Memory", page_icon="🧠")
-st.title("🧠 Home Work 3: Streaming Chatbot that Discusses URLs")
+st.title("🖇️ Home Work 3: Streaming Chatbot that Discusses URLs")
 
 # --- Secrets ---
 # OPENAI_API_KEY  = st.secrets["api_keys"].get("OPENAI_API_KEY")
