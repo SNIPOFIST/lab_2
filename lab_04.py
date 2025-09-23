@@ -3,36 +3,37 @@ import streamlit as st
 from openai import OpenAI
 from PyPDF2 import PdfReader
 
-
+# --- Patch sqlite for Chroma ---
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-import chromadb
+from chromadb import PersistentClient
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
 
 st.title("IST 688 - LAB 04B: Course Information Chatbot")
 
-
+# --- OpenAI client ---
 if "openai_client" not in st.session_state:
     api_key = st.secrets["OPENAI_API_KEY"]
     st.session_state.openai_client = OpenAI(api_key=api_key)
 
-
+# --- Vector DB ---
 if "Lab4_vectorDB" not in st.session_state:
     chromaDB_path = "./ChromaDB_for_lab"
-    chroma_client = chromadb.PersistentClient(path=chromaDB_path)
+    chroma_client = PersistentClient(path=chromaDB_path)
+
     embed_fn = OpenAIEmbeddingFunction(
         api_key=st.secrets["OPENAI_API_KEY"],
         model_name="text-embedding-3-small"
     )
+
+    # Create or load collection
     collection = chroma_client.get_or_create_collection(
-    name="Lab4Collection_openai",
-    embedding_function=embed_fn
-)
+        name="Lab4Collection_openai",
+        embedding_function=embed_fn
+    )
 
-
-
-
+    # Load PDFs
     PDF_DIR = "HWS/File_Folders"
     pdfs = [f for f in os.listdir(PDF_DIR) if f.endswith(".pdf")]
     docs, ids, metas = [], [], []
@@ -52,10 +53,9 @@ if "Lab4_vectorDB" not in st.session_state:
 else:
     collection = st.session_state.Lab4_vectorDB
 
-
+# --- Chat history ---
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
-
 
 for role, msg in st.session_state.chat_history:
     with st.chat_message(role):
@@ -63,17 +63,17 @@ for role, msg in st.session_state.chat_history:
 
 # --- Chat input ---
 if user_query := st.chat_input("Ask about the course PDFs…"):
-    # 1. show user message
+    # user message
     st.session_state.chat_history.append(("user", user_query))
     with st.chat_message("user"):
         st.markdown(user_query)
 
-    
+    # query Chroma
     results = collection.query(query_texts=[user_query], n_results=3)
     retrieved_chunks = [doc for doc in results["documents"][0]]
     context_text = "\n\n---\n\n".join(retrieved_chunks)
 
-    
+    # prompt
     prompt = (
         "You are a helpful course information assistant.\n"
         "If relevant, use the following retrieved context to answer clearly.\n"
@@ -82,17 +82,16 @@ if user_query := st.chat_input("Ask about the course PDFs…"):
         f"User question: {user_query}"
     )
 
-
     client = st.session_state.openai_client
     response = client.chat.completions.create(
-        model="gpt-4o-mini",  # or gpt-3.5-turbo
+        model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.2,
         max_tokens=500
     )
     answer = response.choices[0].message.content
 
-   
+    # assistant message
     st.session_state.chat_history.append(("assistant", answer))
     with st.chat_message("assistant"):
         st.markdown(answer)

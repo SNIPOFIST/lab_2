@@ -1,6 +1,22 @@
 import streamlit as st
 import openai
 
+# streamlit>=1.33
+# openai>=1.50.0
+# mistralai>=1.1.0
+# google-generativeai>=0.7.2
+# requests>=2.31.0
+# beautifulsoup4>=4.12.2
+# lxml>=4.9.0
+# PyPDF2>=3.0.1
+# pysqlite3-binary
+# protobuf
+# langchain
+# langchain-community
+# langchain-openai
+# tiktoken
+# chromadb==1.1.0
+
 # Use the secret key from .streamlit/secrets.toml
 client = openai.OpenAI(api_key=st.secrets["api_keys"]["openai_key"])
 

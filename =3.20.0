@@ -1,7 +1,0 @@
-Defaulting to user installation because normal site-packages is not writeable
-Collecting protobuf
-  Using cached protobuf-6.32.1-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
-Downloading protobuf-6.32.1-cp39-abi3-manylinux2014_x86_64.whl (322 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 322.0/322.0 kB 12.9 MB/s eta 0:00:00
-Installing collected packages: protobuf
-Successfully installed protobuf-6.32.1
