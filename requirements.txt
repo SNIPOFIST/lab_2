@@ -13,3 +13,4 @@ langchain-community==0.3.29
 langchain-openai==0.3.33
 tiktoken
 chromadb==0.5.4
+unstructured
