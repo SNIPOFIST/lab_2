@@ -15,4 +15,4 @@ tiktoken
 chromadb==0.5.4
 unstructured
 langchain_google_genai
-langchain_mistaralai
+langchain_mistralai
