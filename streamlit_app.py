@@ -17,7 +17,7 @@ pages=[
     st.Page("HWS/HW2.py", title= "IST_688_Homework_2"),
     st.Page("HWS/HW3.py", title="IST_688_Homework_3"),
     st.Page("HWS/HW4.py", title= "IST_688_Homework_4"),
-    st.Page("lab_05.py", title="IST 688 - LAB 05"),
+    st.Page("HWS/HW5.py", title="IST_688_Homework_5"),
     st.Page("about.py", title= "About page")
 ]
 

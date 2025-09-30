@@ -71,8 +71,8 @@ instance/
 .scrapy
 
 # Streamlit
+.streamlit/
 .streamlit/secrets.toml
-.streamlit
 
 # Sphinx documentation
 docs/_build/
